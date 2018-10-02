@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.jboss.dmr.ModelNode;
-import org.overbaard.jira.synctool.OverbaardSyncLogger;
+import org.overbaard.jira.synctool.SyncLogger;
 
 /**
  * @author Kabir Khan
@@ -44,7 +44,7 @@ class Util {
             msgNode.get("messsage").set(message);
         }
         final String msg = msgNode.toJSONString(true);
-        OverbaardSyncLogger.LOGGER.debug("Sending error Json. code={}; message={}", error, msg);
+        SyncLogger.LOGGER.debug("Sending error Json. code={}; message={}", error, msg);
         response.setContentType(CONTENT_APP_JSON);
         response.sendError(error, msg);
         response.flushBuffer();

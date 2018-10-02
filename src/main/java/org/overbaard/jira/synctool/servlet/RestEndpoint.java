@@ -59,7 +59,7 @@ public class RestEndpoint {
         //Remove this later
         versionNode.get(Constants.VERSION).set(API_VERSION);
         versionNode.get(Constants.API_VERSION).set(API_VERSION);
-        versionNode.get(Constants.OVERBAARD_VERSION).set(jiraFacade.getOverbaardSyncToolVersion());
+        versionNode.get(Constants.SYNC_TOOL_VERSION).set(jiraFacade.getOverbaardSyncToolVersion());
         return createResponse(versionNode);
     }
 

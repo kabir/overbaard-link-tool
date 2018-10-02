@@ -21,17 +21,17 @@ import org.slf4j.LoggerFactory;
 /**
  * @author Kabir Khan
  */
-public class OverbaardSyncLogger {
+public class SyncLogger {
     private final Logger logger;
 
-    public static final OverbaardSyncLogger LOGGER = new OverbaardSyncLogger("org.overbaard.jira");
+    public static final SyncLogger LOGGER = new SyncLogger("org.overbaard.jira");
 
     /**
      * Logger to use when debugging code/new features on a remote server
      */
-    public static final OverbaardSyncLogger PROTOTYPE = new OverbaardSyncLogger("org.overbaard.jira.prototype");
+    public static final SyncLogger PROTOTYPE = new SyncLogger("org.overbaard.jira.prototype");
 
-    private OverbaardSyncLogger(String category) {
+    private SyncLogger(String category) {
         logger = LoggerFactory.getLogger(category);
     }
 

@@ -15,9 +15,21 @@
  */
 package org.overbaard.jira.synctool.api;
 
+import org.overbaard.jira.synctool.impl.config.SyncSetup;
+
+import com.atlassian.jira.user.ApplicationUser;
+
 /**
  * @author Kabir Khan
  */
 public interface SyncConfigurationManager {
+
+    /**
+     * Loads the configuration and validates it
+     * @param user the current user
+     * @param code the code of the config
+     * @return
+     */
+    SyncSetup getSyncSetupForDisplay(ApplicationUser user, String code);
 }
 

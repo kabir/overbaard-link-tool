@@ -18,8 +18,8 @@ package org.overbaard.jira.synctool;
 /**
  * @author Kabir Khan
  */
-public class OverbaardSyncPermissionException extends RuntimeException {
-    public OverbaardSyncPermissionException(String message) {
+public class SyncPermissionException extends RuntimeException {
+    public SyncPermissionException(String message) {
         super(message);
     }
 }

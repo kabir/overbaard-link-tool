@@ -1,0 +1,24 @@
+{
+  "code": "TEST",
+  "description": "A sample config for testing",
+  "project-sets": [
+    {
+      "left": [
+        {"code": "LEFTA", "query-filter": ""}
+      ],
+      "right": [
+        {"code": "RIGHTA1"},
+        {"code": "RIGHTA2", "query-filter": ""}
+      ]
+    },
+    {
+      "left": [
+        {"code": "LEFTB", "query-filter": ""}
+      ],
+      "right": [
+        {"code": "RIGHTB1", "query-filter": ""},
+        {"code": "RIGHTB2", "query-filter": ""}
+      ]
+    }
+  ]
+}

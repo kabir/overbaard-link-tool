@@ -27,7 +27,6 @@ import com.atlassian.jira.bc.user.UserService;
 import com.atlassian.jira.component.ComponentAccessor;
 import com.atlassian.jira.config.IssueTypeManager;
 import com.atlassian.jira.config.PriorityManager;
-import com.atlassian.jira.issue.CustomFieldManager;
 import com.atlassian.jira.issue.customfields.manager.OptionsManager;
 import com.atlassian.jira.issue.link.IssueLinkManager;
 import com.atlassian.jira.issue.search.SearchContextFactory;
@@ -54,31 +53,16 @@ public class JiraInjectables {
     private final AvatarService avatarService;
 
     @ComponentImport
-    private final CustomFieldManager customFieldManager;
-
-    @ComponentImport
-    private final GlobalPermissionManager globalPermissionManager;
-
-    @ComponentImport
     private final IssueService issueService;
 
     @ComponentImport
     private final IssueLinkManager issueLinkManager;
 
     @ComponentImport
-    private final IssueTypeManager issueTypeManager;
-
-    @ComponentImport
     private final OptionsManager optionsManager;
 
     @ComponentImport
-    private final PermissionManager permissionManager;
-
-    @ComponentImport
     private final ProjectManager projectManager;
-
-    @ComponentImport
-    private final PriorityManager priorityManager;
 
     @ComponentImport
     private final SearchContextFactory searchContextFactory;
@@ -99,27 +83,21 @@ public class JiraInjectables {
 
     @Inject
     public JiraInjectables(final ActiveObjects activeObjects, final ApplicationProperties applicationProperties,
-                           final AvatarService avatarService, final CustomFieldManager customFieldManager,
-                           final GlobalPermissionManager globalPermissionManager, final IssueService issueService,
-                           final IssueLinkManager issueLinkManager, final IssueTypeManager issueTypeManager,
+                           final AvatarService avatarService,
+                           final IssueService issueService,
+                           final IssueLinkManager issueLinkManager,
                            final OptionsManager optionsManager,
-                           final PermissionManager permissionManager, final ProjectManager projectManager,
-                           final PriorityManager priorityManager,
+                           final ProjectManager projectManager,
                            final SearchContextFactory searchContextFactory,
                            final SearchService searchService,
                            final UserService userService, final VersionManager versionManager) {
         this.activeObjects = activeObjects;
         this.applicationProperties = applicationProperties;
         this.avatarService = avatarService;
-        this.customFieldManager = customFieldManager;
-        this.globalPermissionManager = globalPermissionManager;
         this.issueService = issueService;
         this.issueLinkManager = issueLinkManager;
-        this.issueTypeManager = issueTypeManager;
         this.optionsManager = optionsManager;
-        this.permissionManager = permissionManager;
         this.projectManager = projectManager;
-        this.priorityManager = priorityManager;
         this.searchContextFactory = searchContextFactory;
         this.searchService = searchService;
         this.userService = userService;
@@ -138,14 +116,6 @@ public class JiraInjectables {
         return avatarService;
     }
 
-    public CustomFieldManager getCustomFieldManager() {
-        return customFieldManager;
-    }
-
-    public GlobalPermissionManager getGlobalPermissionManager() {
-        return globalPermissionManager;
-    }
-
     public IssueService getIssueService() {
         return issueService;
     }
@@ -154,24 +124,13 @@ public class JiraInjectables {
         return issueLinkManager;
     }
 
-    public IssueTypeManager getIssueTypeManager() {
-        return issueTypeManager;
-    }
 
     public OptionsManager getOptionsManager() {
         return optionsManager;
     }
 
-    public PermissionManager getPermissionManager() {
-        return permissionManager;
-    }
-
     public ProjectManager getProjectManager() {
         return projectManager;
-    }
-
-    public PriorityManager getPriorityManager() {
-        return priorityManager;
     }
 
     public SearchContextFactory getSearchContextFactory() {

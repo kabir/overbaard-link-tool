@@ -21,8 +21,8 @@ import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
 import org.jboss.dmr.ModelNode;
-import org.overbaard.jira.synctool.OverbaardSyncPermissionException;
-import org.overbaard.jira.synctool.OverbaardSyncValidationException;
+import org.overbaard.jira.synctool.SyncPermissionException;
+import org.overbaard.jira.synctool.SyncValidationException;
 
 /**
  * Jax-rs exception mappers making sure that any errors are in the format expected by the client.
@@ -31,17 +31,17 @@ import org.overbaard.jira.synctool.OverbaardSyncValidationException;
  */
 public class ExceptionMappers {
     @Provider
-    public static class OverbaardPermissionExceptionMapper implements ExceptionMapper<OverbaardSyncPermissionException> {
+    public static class OverbaardPermissionExceptionMapper implements ExceptionMapper<SyncPermissionException> {
         @Override
-        public Response toResponse(OverbaardSyncPermissionException e) {
+        public Response toResponse(SyncPermissionException e) {
             return getErrorResponse(Response.Status.FORBIDDEN, e, "Permission violation");
         }
     }
 
     @Provider
-    public static class OverbaardValidationExceptionMapper implements ExceptionMapper<OverbaardSyncValidationException> {
+    public static class OverbaardValidationExceptionMapper implements ExceptionMapper<SyncValidationException> {
         @Override
-        public Response toResponse(OverbaardSyncValidationException e) {
+        public Response toResponse(SyncValidationException e) {
             return getErrorResponse(Response.Status.BAD_REQUEST, e, "Validation error");
         }
     }

@@ -29,7 +29,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.overbaard.jira.synctool.OverbaardSyncLogger;
+import org.overbaard.jira.synctool.SyncLogger;
 
 /**
  * @author Kabir Khan
@@ -54,7 +54,7 @@ public class PrettyUrlFilter implements Filter {
         final HttpServletRequest req = (HttpServletRequest)request;
         final String originalPath = req.getServletPath();
         if (!originalPath.startsWith(OVERBAARD_SYNC)) {
-            OverbaardSyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter using original path {}", originalPath);
+            SyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter using original path {}", originalPath);
             chain.doFilter(request, response);
             return;
         }
@@ -63,18 +63,18 @@ public class PrettyUrlFilter implements Filter {
         boolean redirect = false;
         if (subPath.length() == 0 || subPath.equals("/")) {
             subPath = OVERBAARD_SYNC + "/index.html";
-            OverbaardSyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter empty path will be redirected");
+            SyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter empty path will be redirected");
             redirect = true;
         }
 
         if (redirect) {
             HttpServletResponse resp = (HttpServletResponse)response;
             subPath = req.getContextPath() + subPath;
-            OverbaardSyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter redirecting {} to {}", originalPath, subPath);
+            SyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter redirecting {} to {}", originalPath, subPath);
             resp.sendRedirect(subPath);
         } else {
             final String realPath = OVERBAARD_SYNC_RESOURCES + subPath;
-            OverbaardSyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter forwarding {} to {}", originalPath, subPath);
+            SyncLogger.LOGGER.debug("Overbård Sync Tool pretty url filter forwarding {} to {}", originalPath, subPath);
             final RequestDispatcher rd = request.getRequestDispatcher(realPath);
             rd.forward(request, response);
         }

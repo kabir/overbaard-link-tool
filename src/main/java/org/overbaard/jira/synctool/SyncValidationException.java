@@ -18,8 +18,8 @@ package org.overbaard.jira.synctool;
 /**
  * @author Kabir Khan
  */
-public class OverbaardSyncValidationException extends RuntimeException {
-    public OverbaardSyncValidationException(String message) {
+public class SyncValidationException extends RuntimeException {
+    public SyncValidationException(String message) {
         super(message);
     }
 }
